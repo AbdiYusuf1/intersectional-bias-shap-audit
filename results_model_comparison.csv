@@ -1,0 +1,5 @@
+Model,Test accuracy,Above baseline
+Resume-job overlap only,0.591875,0.0919
+Combined text (TF-IDF),0.67625,0.1763
+Separate blocks + overlap,0.72875,0.2288
+Random Forest,0.75625,0.2562
