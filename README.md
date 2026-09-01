@@ -1,9 +1,8 @@
 # Explaining Intersectional Bias in AI Recruitment Using SHAP
 
-A controlled name-injection audit of automated CV screening models.
+A controlled name injection audit of automated CV screening models.
 
 **Abdihafid Yusuf** — MSc Data Science and Artificial Intelligence, Sheffield Hallam University
-Supervisor: Maysa Mohamed
 
 ---
 
@@ -19,22 +18,22 @@ Most published fairness audits are **observational**: they compare outcomes acro
 demographic groups that differ in many other respects, so any disparity is confounded
 with genuine differences between candidates.
 
-This project uses an **experimental** design drawn from the correspondence-audit
+This project uses an **experimental** design drawn from the correspondence audit
 tradition (Bertrand & Mullainathan, 2004). Each CV is duplicated across four
-race–gender conditions, byte-identical apart from the injected name. Comparisons are
+race gender conditions, byte identical apart from the injected name. Comparisons are
 made *within* matched sets, so every candidate characteristic is held constant by
 construction and any difference in model output is attributable to the name alone.
 
 ## Findings
 
-1. **Bag-of-words screening models are structurally incapable of direct name
+1. **Bag of words screening models are structurally incapable of direct name
    discrimination.** Only 1 of 34 injected name tokens entered the vocabulary of a
    model trained on nameless CVs.
 
 2. **Naive auditing produces false positives.** 391 of 400 scores shifted when a name
    was added — caused by document-length normalisation, not the name itself.
 
-3. **No reproducible name-based bias** was found, across two model families and four
+3. **No reproducible name based bias** was found, across two model families and four
    independent methods. Minimum disparate impact ratio 0.968 (threshold 0.80).
 
 4. **Statistical significance within a run is not reproducibility across runs.** A
@@ -47,14 +46,14 @@ construction and any difference in model output is attributable to the name alon
 | File | Description |
 |---|---|
 | `shap_intersectional_audit.ipynb` | Main study: Designs A and B, paired analysis, fairness metrics, SHAP, validation layer, seed stability |
-| `rf_cross_model_audit.ipynb` | Cross-model replication on Random Forest |
+| `rf_cross_model_audit.ipynb` | Cross model replication on Random Forest |
 | `results/` | Exported result tables (CSV) |
 | `figures/` | Design diagrams and result figures |
 
 ## Dataset
 
 [`cnamuangtoun/resume-job-description-fit`](https://huggingface.co/datasets/cnamuangtoun/resume-job-description-fit)
-(Hugging Face) — 8,000 resume–job description pairs labelled *Good Fit*,
+(Hugging Face) — 8,000 resume job description pairs labelled *Good Fit*,
 *Potential Fit*, or *No Fit*.
 
 **Licence:** none declared. The dataset has no dataset card and no licence tag. It is
@@ -87,20 +86,20 @@ development:
 | Safeguard | Failure mode it prevents |
 |---|---|
 | Label learnability check | An unlearnable target produces a guaranteed null that mimics fairness |
-| Name-collision screening | 12% of CVs already contain candidate name tokens, contaminating the manipulation |
-| Byte-identity assertion | Silent contamination would invalidate the causal claim |
-| Exposure-matched placebo | Unequal name exposure inflates apparent importance (1.18×) |
+| Name collision screening | 12% of CVs already contain candidate name tokens, contaminating the manipulation |
+| Byte identity assertion | Silent contamination would invalidate the causal claim |
+| Exposure matched placebo | Unequal name exposure inflates apparent importance (1.18×) |
 | Effect sizes with Holm correction | Significance alone does not indicate magnitude |
-| Seed-stability testing | Single-run effects can reverse sign across seeds |
+| Seed stability testing | Single-run effects can reverse sign across seeds |
 
 ## Limitations
 
 - Dataset label provenance is undocumented; labels appear algorithmically derived
   rather than confirmed human hiring decisions
 - Resume text is drawn from public CV templates, not live applications
-- Names are US-validated (Bertrand & Mullainathan, 2004; 1974–79 records) applied in a
+- Names are US validated (Bertrand & Mullainathan, 2004; 1974–79 records) applied in a
   UK and EU regulatory framing
-- Bag-of-words representations cannot capture contextual name effects that
+- Bag of words representations cannot capture contextual name effects that
   transformer-based screening models might exhibit
 
 ## References
@@ -121,5 +120,3 @@ discrimination in recruitment practice in British cities* (Research Report 607).
 Department for Work and Pensions.
 
 ---
-
-*Academic project submitted for assessment. Not intended for production use.*
