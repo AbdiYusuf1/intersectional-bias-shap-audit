@@ -47,8 +47,8 @@ construction and any difference in model output is attributable to the name alon
 |---|---|
 | `shap_intersectional_audit.ipynb` | Main study: Designs A and B, paired analysis, fairness metrics, SHAP, validation layer, seed stability |
 | `rf_cross_model_audit.ipynb` | Cross model replication on Random Forest |
-| `results/` | Exported result tables (CSV) |
-| `figures/` | Design diagrams and result figures |
+| `results_*.csv` | Exported result tables |
+| `Figure*.png` | Design diagrams and result figures |
 
 ## Dataset
 
